@@ -1,0 +1,7 @@
+requests
+python-dotenv
+groq
+shodan
+requests
+beautifulsoup4
+tkinter

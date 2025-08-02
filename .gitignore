@@ -1,0 +1,17 @@
+# Ortam dosyaları
+.env
+
+# Python derleme dosyaları
+__pycache__/
+*.py[cod]
+*.pyo
+
+# IDE / Editor klasörleri
+.vscode/
+.idea/
+
+# Sistem dosyaları
+.DS_Store
+
+# Log dosyaları
+*.log
