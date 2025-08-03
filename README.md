@@ -132,3 +132,16 @@ Bu proje MIT lisansı altında lisanslanmıştır.
 ## ⚠️ Sorumluluk Reddi
 
 Bu araç sadece eğitim ve güvenlik testleri için tasarlanmıştır. Kullanıcılar kendi sorumluluklarında kullanırlar. Geliştirici herhangi bir zarardan sorumlu değildir. 
+
+##Proje Görseller
+
+<img width="1919" height="973" alt="Ekran görüntüsü 2025-08-02 205532" src="https://github.com/user-attachments/assets/beac1092-b814-4bdb-872e-e494fe7b1644" />
+
+<img width="1919" height="961" alt="Ekran görüntüsü 2025-08-02 205604" src="https://github.com/user-attachments/assets/a3ed4e85-48da-4257-9cb6-f949ff39547c" />
+
+<img width="1919" height="962" alt="Ekran görüntüsü 2025-08-02 205616" src="https://github.com/user-attachments/assets/429f66e1-77d7-497c-8bb8-0acbb94c2bad" />
+
+<img width="1919" height="971" alt="Ekran görüntüsü 2025-08-02 205626" src="https://github.com/user-attachments/assets/1f59ef08-f75a-4f64-b1ee-2bc9861ee486" />
+
+
+
