@@ -1,4 +1,4 @@
-from Opening import Ust_Yazi
+
 from Api_Shodan import shodan_servisleri_al, nmap_ile_surumu_bul, shodan_port_sorgula, shodan_genel_arama
 import os
 from dotenv import load_dotenv
@@ -10,7 +10,7 @@ def mitre_cve_ara(urun, surum):
     import requests
     import time
     
-    # Timeout ayarları
+   
     timeout = 10  # 10 saniye timeout
     
     try:
@@ -104,19 +104,4 @@ def shodan_ip_acik_portlari_goster(ip_adresi):
     for servis in servisler:
         print(f"Port: {servis['port']} | Ürün: {servis['urun']} | Sürüm: {servis['surum']}")
 
-if __name__ == "__main__":
-    while True:
-        Ust_Yazi()
-        secim = input("--> ")
-        if secim == "0":
-            print("Çıkılıyor...")
-            break
-        elif secim == "1":
-            ip_adresi = input("IP Giriniz: ")
-            shodan_mitre_llm_analiz(ip_adresi)
-        elif secim == "2":
-            ip_adresi = input("Açık portlarını ve servislerini görmek istediğiniz IP adresini girin: ")
-            shodan_ip_acik_portlari_goster(ip_adresi)
-        elif secim == "3":
-            anahtar_kelime = input("Aramak istediğiniz anahtar kelimeyi girin (örn: apache): ")
-            shodan_genel_arama(anahtar_kelime)
+
