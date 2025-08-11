@@ -83,16 +83,16 @@ def shodan_mitre_llm_analiz(ip_adresi):
         if not urun or not surum:
             print(f"{port} için servis/sürüm tespit edilemedi.")
             continue
-        print(f"\n🔍 {urun} {surum} için CVE aranıyor...")
+        print(f"\n {urun} {surum} için CVE aranıyor...")
         cve_listesi = mitre_cve_ara(urun, surum)
         if not cve_listesi:
-            print("✅ CVE kaydı bulunamadı.")
+            print(" CVE kaydı bulunamadı.")
             continue
         for cve in cve_listesi[:2]:
-            print(f"\n🛑 CVE ID: {cve['cve_id']}")
-            print(f"📝 Açıklama: {cve['aciklama']}")
+            print(f"\n CVE ID: {cve['cve_id']}")
+            print(f" Açıklama: {cve['aciklama']}")
             ai_cevap = llm_cozum_onerisi_getir(cve['aciklama'])
-            print(f"\n🤖 LLM Çözüm Önerisi:\n{ai_cevap}")
+            print(f"\n LLM Çözüm Önerisi:\n{ai_cevap}")
             print("-" * 60)
 
 def shodan_ip_acik_portlari_goster(ip_adresi):

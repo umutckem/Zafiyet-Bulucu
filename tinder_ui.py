@@ -12,7 +12,7 @@ from output_capture import OutputCapture
 class ModernUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("🔒 Zafiyet Bulucu Pro")
+        self.root.title(" Zafiyet Bulucu Pro")
         self.root.geometry("1200x800")
         self.root.configure(bg="#1a1a2e")
         
@@ -57,7 +57,7 @@ class ModernUI:
         
         title_label = tk.Label(
             title_frame,
-            text="🔒 Zafiyet Bulucu Pro",
+            text=" Zafiyet Bulucu Pro",
             font=("Segoe UI", 28, "bold"),
             fg=self.colors['primary'],
             bg=self.colors['bg_dark']
@@ -121,7 +121,7 @@ class ModernUI:
      
         card_title = tk.Label(
             card,
-            text="🎯 Analiz Seçenekleri",
+            text=" Analiz Seçenekleri",
             font=("Segoe UI", 22, "bold"),
             fg=self.colors['text_light'],
             bg=self.colors['bg_card']
@@ -134,10 +134,10 @@ class ModernUI:
         
         
         buttons = [
-            ("🔍 IP Zafiyet Analizi", self.show_ip_analysis_card, 'primary'),
-            ("📊 Açık Port Taraması", self.show_port_list_card, 'secondary'),
-            ("🌐 Shodan Arama", self.show_general_search_card, 'accent'),
-            ("❌ Çıkış", self.root.quit, 'danger')
+            (" IP Zafiyet Analizi", self.show_ip_analysis_card, 'primary'),
+            (" Açık Port Taraması", self.show_port_list_card, 'secondary'),
+            (" Shodan Arama", self.show_general_search_card, 'accent'),
+            (" Çıkış", self.root.quit, 'danger')
         ]
         
     
@@ -178,7 +178,7 @@ class ModernUI:
     
         title = tk.Label(
             top_bar,
-            text="🔍 IP Zafiyet Analizi",
+            text=" IP Zafiyet Analizi",
             font=("Segoe UI", 20, "bold"),
             fg=self.colors['text_light'],
             bg=self.colors['bg_card']
@@ -220,25 +220,25 @@ class ModernUI:
         
        
         port_btn = self.create_rounded_button(
-            button_container, "🌐 Portları Tara", self.scan_ports, 'accent'
+            button_container, " Portları Tara", self.scan_ports, 'accent'
         )
         port_btn.pack(fill='x', pady=(0, 10))
         
       
         analyze_btn = self.create_rounded_button(
-            button_container, "🔍 Servisleri Bul", self.find_services, 'success'
+            button_container, " Servisleri Bul", self.find_services, 'success'
         )
         analyze_btn.pack(fill='x', pady=(0, 10))
         
        
         cve_btn = self.create_rounded_button(
-            button_container, "🛡️ CVE Analizi", self.analyze_cves, 'danger'
+            button_container, " CVE Analizi", self.analyze_cves, 'danger'
         )
         cve_btn.pack(fill='x', pady=(0, 10))
         
        
         save_btn = self.create_rounded_button(
-            button_container, "💾 Sonucu Kaydet", self.save_analysis_result, 'primary'
+            button_container, " Sonucu Kaydet", self.save_analysis_result, 'primary'
         )
         save_btn.pack(fill='x')
         
@@ -248,7 +248,7 @@ class ModernUI:
         
         result_label = tk.Label(
             right_panel,
-            text="📋 Analiz Sonuçları:",
+            text=" Analiz Sonuçları:",
             font=("Segoe UI", 14, "bold"),
             fg=self.colors['text_light'],
             bg=self.colors['bg_card']
@@ -278,7 +278,7 @@ class ModernUI:
             
         def run_port_scan():
             self.result_text.delete(1.0, tk.END)
-            self.result_text.insert(tk.END, f"🌐 {ip} portları taranıyor...\n")
+            self.result_text.insert(tk.END, f" {ip} portları taranıyor...\n")
             self.result_text.insert(tk.END, "=" * 80 + "\n\n")
             self.root.update()
             
@@ -289,11 +289,11 @@ class ModernUI:
                 
              
                 self.result_text.insert(tk.END, self.output_capture.output)
-                self.result_text.insert(tk.END, "\n✅ Port taraması tamamlandı!\n")
-                self.result_text.insert(tk.END, "🔍 Şimdi 'Servisleri Bul' butonuna tıklayarak detaylı analiz yapabilirsiniz.\n")
+                self.result_text.insert(tk.END, "\n Port taraması tamamlandı!\n")
+                self.result_text.insert(tk.END, " Şimdi 'Servisleri Bul' butonuna tıklayarak detaylı analiz yapabilirsiniz.\n")
                 
             except Exception as e:
-                self.result_text.insert(tk.END, f"\n❌ Hata: {str(e)}\n")
+                self.result_text.insert(tk.END, f"\n Hata: {str(e)}\n")
                 
         threading.Thread(target=run_port_scan, daemon=True).start()
         
@@ -306,7 +306,7 @@ class ModernUI:
             
         def run_service_scan():
             self.result_text.delete(1.0, tk.END)
-            self.result_text.insert(tk.END, f"🔍 {ip} servisleri taranıyor...\n")
+            self.result_text.insert(tk.END, f" {ip} servisleri taranıyor...\n")
             self.result_text.insert(tk.END, "=" * 80 + "\n\n")
             self.root.update()
             
@@ -315,24 +315,24 @@ class ModernUI:
                 self.found_services = shodan_servisleri_al(ip)
                 
                 if not self.found_services:
-                    self.result_text.insert(tk.END, "❌ Bu IP'de Shodan'da servis kaydı bulunamadı.\n")
-                    self.result_text.insert(tk.END, "💡 Önce 'Portları Tara' butonunu kullanarak port taraması yapabilirsiniz.\n")
+                    self.result_text.insert(tk.END, " Bu IP'de Shodan'da servis kaydı bulunamadı.\n")
+                    self.result_text.insert(tk.END, " Önce 'Portları Tara' butonunu kullanarak port taraması yapabilirsiniz.\n")
                     return
                 
                 # Servisleri göster
-                self.result_text.insert(tk.END, f"✅ {len(self.found_services)} servis bulundu:\n\n")
+                self.result_text.insert(tk.END, f" {len(self.found_services)} servis bulundu:\n\n")
                 
                 for i, service in enumerate(self.found_services, 1):
-                    self.result_text.insert(tk.END, f"🔍 Servis {i}:\n")
+                    self.result_text.insert(tk.END, f" Servis {i}:\n")
                     self.result_text.insert(tk.END, f"   Port: {service['port']}\n")
                     self.result_text.insert(tk.END, f"   Ürün: {service['urun']}\n")
                     self.result_text.insert(tk.END, f"   Sürüm: {service['surum'] or 'Bilinmiyor'}\n")
                     self.result_text.insert(tk.END, "-" * 40 + "\n")
                 
-                self.result_text.insert(tk.END, "\n🛡️ CVE analizi için 'CVE Analizi' butonuna tıklayın.\n")
+                self.result_text.insert(tk.END, "\n CVE analizi için 'CVE Analizi' butonuna tıklayın.\n")
                 
             except Exception as e:
-                self.result_text.insert(tk.END, f"\n❌ Hata: {str(e)}\n")
+                self.result_text.insert(tk.END, f"\n Hata: {str(e)}\n")
                 
         threading.Thread(target=run_service_scan, daemon=True).start()
         
@@ -344,7 +344,7 @@ class ModernUI:
             
         def run_cve_analysis():
             self.result_text.delete(1.0, tk.END)
-            self.result_text.insert(tk.END, "🛡️ CVE analizi başlatılıyor...\n")
+            self.result_text.insert(tk.END, " CVE analizi başlatılıyor...\n")
             self.result_text.insert(tk.END, "=" * 80 + "\n\n")
             self.root.update()
             
@@ -366,19 +366,19 @@ class ModernUI:
                     
                 
                     if not surum:
-                        self.result_text.insert(tk.END, f"   📊 Sürüm tespit ediliyor (nmap)...\n")
+                        self.result_text.insert(tk.END, f"    Sürüm tespit ediliyor (nmap)...\n")
                         urun, surum = nmap_ile_surumu_bul(self.ip_entry.get().strip(), port)
                     
                     if not urun or not surum:
-                        self.result_text.insert(tk.END, f"   ❌ Sürüm tespit edilemedi.\n\n")
+                        self.result_text.insert(tk.END, f"    Sürüm tespit edilemedi.\n\n")
                         continue
                     
           
-                    self.result_text.insert(tk.END, f"   🛡️ CVE kayıtları aranıyor...\n")
+                    self.result_text.insert(tk.END, f"    CVE kayıtları aranıyor...\n")
                     cve_listesi = mitre_cve_ara(urun, surum)
                     
                     if cve_listesi:
-                        self.result_text.insert(tk.END, f"   ✅ {len(cve_listesi)} CVE bulundu!\n")
+                        self.result_text.insert(tk.END, f"    {len(cve_listesi)} CVE bulundu!\n")
                         total_cves += len(cve_listesi)
                         self.cve_results[f"{urun}_{surum}"] = cve_listesi
                         
@@ -397,7 +397,7 @@ class ModernUI:
                         if len(cve_listesi) > 3:
                             self.result_text.insert(tk.END, f"      ... ve {len(cve_listesi) - 3} CVE daha\n")
                     else:
-                        self.result_text.insert(tk.END, f"   ✅ CVE kaydı bulunamadı.\n")
+                        self.result_text.insert(tk.END, f"    CVE kaydı bulunamadı.\n")
                     
                     self.result_text.insert(tk.END, "\n")
                     
@@ -407,20 +407,20 @@ class ModernUI:
                         import time
                         time.sleep(0.2)  
                 
-                self.result_text.insert(tk.END, f"🎯 Toplam {total_cves} CVE bulundu!\n")
+                self.result_text.insert(tk.END, f" Toplam {total_cves} CVE bulundu!\n")
                 
                 if all_cves:
-                    self.result_text.insert(tk.END, "🤖 LLM çözüm önerileri için CVE seçimi yapın.\n")
+                    self.result_text.insert(tk.END, " LLM çözüm önerileri için CVE seçimi yapın.\n")
                     self.result_text.insert(tk.END, "=" * 80 + "\n\n")
                     self.root.update()
                     
                 
                     self.create_cve_selection_interface(all_cves)
                 else:
-                    self.result_text.insert(tk.END, "❌ LLM analizi için CVE bulunamadı.\n")
+                    self.result_text.insert(tk.END, " LLM analizi için CVE bulunamadı.\n")
                 
             except Exception as e:
-                self.result_text.insert(tk.END, f"\n❌ Hata: {str(e)}\n")
+                self.result_text.insert(tk.END, f"\n Hata: {str(e)}\n")
                 
         threading.Thread(target=run_cve_analysis, daemon=True).start()
         
@@ -449,7 +449,7 @@ class ModernUI:
      
         title = tk.Label(
             header_frame,
-            text="🤖 LLM Çözüm Önerisi için CVE Seçin:",
+            text=" LLM Çözüm Önerisi için CVE Seçin:",
             font=("Segoe UI", 12, "bold"),
             fg=self.colors['text_light'],
             bg=self.colors['bg_card']
@@ -569,7 +569,7 @@ class ModernUI:
        
         analyze_btn = self.create_rounded_button(
             bottom_frame, 
-            "🚀 Seçilenler için LLM Analizi Başlat", 
+            " Seçilenler için LLM Analizi Başlat", 
             self.analyze_selected_cves, 
             'primary'
         )
@@ -593,7 +593,7 @@ class ModernUI:
         
         title_label = tk.Label(
             title_frame,
-            text=f"🔍 {cve_data['cve_id']} Detayları",
+            text=f" {cve_data['cve_id']} Detayları",
             font=("Segoe UI", 14, "bold"),
             fg=self.colors['primary'],
             bg=self.colors['bg_dark']
@@ -617,8 +617,8 @@ class ModernUI:
         detail_text.pack(fill='both', expand=True)
         
       
-        detail_text.insert(tk.END, f"🔴 CVE ID: {cve_data['cve_id']}\n\n")
-        detail_text.insert(tk.END, f"📝 Açıklama:\n{cve_data['aciklama']}\n\n")
+        detail_text.insert(tk.END, f" CVE ID: {cve_data['cve_id']}\n\n")
+        detail_text.insert(tk.END, f" Açıklama:\n{cve_data['aciklama']}\n\n")
         
         
         self.center_window(detail_window)
@@ -663,47 +663,47 @@ class ModernUI:
     def get_selected_llm_solutions(self, selected_cves):
         """Seçilen CVE'ler için LLM çözüm önerilerini al"""
         def run_llm_analysis():
-            self.result_text.insert(tk.END, f"\n🤖 {len(selected_cves)} seçilen CVE için LLM analizi başlatılıyor...\n")
+            self.result_text.insert(tk.END, f"\n {len(selected_cves)} seçilen CVE için LLM analizi başlatılıyor...\n")
             self.result_text.insert(tk.END, "=" * 80 + "\n\n")
             self.root.update()
             
             try:
                 for i, cve in enumerate(selected_cves, 1):
-                    self.result_text.insert(tk.END, f"🤖 {i}/{len(selected_cves)} - {cve['cve_id']} analiz ediliyor...\n")
+                    self.result_text.insert(tk.END, f" {i}/{len(selected_cves)} - {cve['cve_id']} analiz ediliyor...\n")
                     self.root.update()
                     
                     try:
                         # LLM çözüm önerisi al
                         llm_solution = llm_cozum_onerisi_getir(cve['aciklama'])
                         
-                        self.result_text.insert(tk.END, f"\n🔴 CVE ID: {cve['cve_id']}\n")
-                        self.result_text.insert(tk.END, f"📝 Açıklama: {cve['aciklama']}\n")
+                        self.result_text.insert(tk.END, f"\n CVE ID: {cve['cve_id']}\n")
+                        self.result_text.insert(tk.END, f" Açıklama: {cve['aciklama']}\n")
                         self.result_text.insert(tk.END, "=" * 50 + "\n")
-                        self.result_text.insert(tk.END, f"🤖 LLM Çözüm Önerisi:\n{llm_solution}\n")
+                        self.result_text.insert(tk.END, f" LLM Çözüm Önerisi:\n{llm_solution}\n")
                         self.result_text.insert(tk.END, "=" * 50 + "\n\n")
                         
                         # Sonucu sakla
-                        self.current_analysis_result += f"\n🔴 CVE ID: {cve['cve_id']}\n"
-                        self.current_analysis_result += f"📝 Açıklama: {cve['aciklama']}\n"
-                        self.current_analysis_result += f"🤖 LLM Çözüm Önerisi:\n{llm_solution}\n"
+                        self.current_analysis_result += f"\n CVE ID: {cve['cve_id']}\n"
+                        self.current_analysis_result += f" Açıklama: {cve['aciklama']}\n"
+                        self.current_analysis_result += f" LLM Çözüm Önerisi:\n{llm_solution}\n"
                         self.current_analysis_result += "=" * 50 + "\n\n"
                         
                     except Exception as e:
-                        self.result_text.insert(tk.END, f"❌ {cve['cve_id']} için LLM analizi hatası: {str(e)}\n\n")
+                        self.result_text.insert(tk.END, f" {cve['cve_id']} için LLM analizi hatası: {str(e)}\n\n")
                         continue
                     
                     # Her 2 CVE'de bir kısa bekleme (rate limiting için)
                     if i % 2 == 0:
-                        self.result_text.insert(tk.END, "⏳ Kısa bir bekleme...\n")
+                        self.result_text.insert(tk.END, " Kısa bir bekleme...\n")
                         self.root.update()
                         import time
                         time.sleep(0.5)  # 0.5 saniye bekleme
                 
-                self.result_text.insert(tk.END, f"✅ Seçilen CVE'ler için LLM analizi tamamlandı!\n")
-                self.result_text.insert(tk.END, f"💾 Sonuçları kaydetmek için 'Sonucu Kaydet' butonuna tıklayın.\n")
+                self.result_text.insert(tk.END, f" Seçilen CVE'ler için LLM analizi tamamlandı!\n")
+                self.result_text.insert(tk.END, f" Sonuçları kaydetmek için 'Sonucu Kaydet' butonuna tıklayın.\n")
                 
             except Exception as e:
-                self.result_text.insert(tk.END, f"\n❌ LLM analizi genel hatası: {str(e)}\n")
+                self.result_text.insert(tk.END, f"\n LLM analizi genel hatası: {str(e)}\n")
         
         threading.Thread(target=run_llm_analysis, daemon=True).start()
         
@@ -731,13 +731,13 @@ class ModernUI:
             try:
               
                 with open(file_path, 'w', encoding='utf-8') as f:
-                    f.write("🔒 Zafiyet Bulucu Pro - Analiz Raporu\n")
+                    f.write(" Zafiyet Bulucu Pro - Analiz Raporu\n")
                     f.write("=" * 50 + "\n")
-                    f.write(f"📅 Tarih: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n")
-                    f.write(f"🎯 IP Adresi: {self.ip_entry.get().strip()}\n")
+                    f.write(f" Tarih: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n")
+                    f.write(f" IP Adresi: {self.ip_entry.get().strip()}\n")
                     f.write("=" * 50 + "\n\n")
                     f.write(self.current_analysis_result)
-                    f.write("\n\n✅ Analiz tamamlandı!")
+                    f.write("\n\n Analiz tamamlandı!")
                 
                 messagebox.showinfo("Başarılı", f"Analiz sonucu başarıyla kaydedildi:\n{file_path}")
                 
@@ -770,7 +770,7 @@ class ModernUI:
         
         title = tk.Label(
             top_bar,
-            text="📊 Açık Port Taraması",
+            text=" Açık Port Taraması",
             font=("Segoe UI", 20, "bold"),
             fg=self.colors['text_light'],
             bg=self.colors['bg_card']
@@ -808,7 +808,7 @@ class ModernUI:
         
         
         list_btn = self.create_rounded_button(
-            left_panel, "📋 Portları Tara", self.list_ports, 'accent'
+            left_panel, " Portları Tara", self.list_ports, 'accent'
         )
         list_btn.pack(pady=20)
         
@@ -818,7 +818,7 @@ class ModernUI:
         
         result_label = tk.Label(
             right_panel,
-            text="📋 Port Tarama Sonuçları:",
+            text=" Port Tarama Sonuçları:",
             font=("Segoe UI", 14, "bold"),
             fg=self.colors['text_light'],
             bg=self.colors['bg_card']
@@ -847,7 +847,7 @@ class ModernUI:
             
         def run_port_scan():
             self.port_result_text.delete(1.0, tk.END)
-            self.port_result_text.insert(tk.END, f"📊 {ip} portları taranıyor...\n")
+            self.port_result_text.insert(tk.END, f" {ip} portları taranıyor...\n")
             self.port_result_text.insert(tk.END, "=" * 80 + "\n\n")
             self.root.update()
             
@@ -858,9 +858,9 @@ class ModernUI:
                 
                 
                 self.port_result_text.insert(tk.END, self.output_capture.output)
-                self.port_result_text.insert(tk.END, "\n✅ Port taraması tamamlandı!\n")
+                self.port_result_text.insert(tk.END, "\n Port taraması tamamlandı!\n")
             except Exception as e:
-                self.port_result_text.insert(tk.END, f"\n❌ Hata: {str(e)}\n")
+                self.port_result_text.insert(tk.END, f"\n Hata: {str(e)}\n")
                 
         threading.Thread(target=run_port_scan, daemon=True).start()
         
@@ -891,7 +891,7 @@ class ModernUI:
         
         title = tk.Label(
             top_bar,
-            text="🌐 Shodan Arama",
+            text=" Shodan Arama",
             font=("Segoe UI", 20, "bold"),
             fg=self.colors['text_light'],
             bg=self.colors['bg_card']
@@ -929,7 +929,7 @@ class ModernUI:
         
        
         search_btn = self.create_rounded_button(
-            left_panel, "🔍 Ara", self.general_search, 'danger'
+            left_panel, " Ara", self.general_search, 'danger'
         )
         search_btn.pack(pady=20)
         
@@ -939,7 +939,7 @@ class ModernUI:
         
         result_label = tk.Label(
             right_panel,
-            text="📋 Arama Sonuçları:",
+            text=" Arama Sonuçları:",
             font=("Segoe UI", 14, "bold"),
             fg=self.colors['text_light'],
             bg=self.colors['bg_card']
@@ -968,7 +968,7 @@ class ModernUI:
             
         def run_search():
             self.search_result_text.delete(1.0, tk.END)
-            self.search_result_text.insert(tk.END, f"🌐 '{search_term}' aranıyor...\n")
+            self.search_result_text.insert(tk.END, f" '{search_term}' aranıyor...\n")
             self.search_result_text.insert(tk.END, "=" * 80 + "\n\n")
             self.root.update()
             
@@ -979,9 +979,9 @@ class ModernUI:
                 
                 
                 self.search_result_text.insert(tk.END, self.output_capture.output)
-                self.search_result_text.insert(tk.END, "\n✅ Arama tamamlandı!\n")
+                self.search_result_text.insert(tk.END, "\n Arama tamamlandı!\n")
             except Exception as e:
-                self.search_result_text.insert(tk.END, f"\n❌ Hata: {str(e)}\n")
+                self.search_result_text.insert(tk.END, f"\n Hata: {str(e)}\n")
                 
         threading.Thread(target=run_search, daemon=True).start()
 
